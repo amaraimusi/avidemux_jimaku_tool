@@ -1,0 +1,2 @@
+# avidemux_jimaku_tool
+Avidemux字幕入力ツール
