@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ひな形と行列データからコード群を生成</title>
+
+	<link href="/note_prg/css/jquery-ui.min.css" rel="stylesheet">
+	<link href="/note_prg/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/note_prg/css/common2.css" rel="stylesheet">
+	<script src="/note_prg/js/jquery-1.11.1.min.js"></script>
+	<script src="/note_prg/js/jquery-ui.min.js"></script>
+	<script src="/note_prg/js/bootstrap.min.js"></script>
+	<script src="code_by_template_and_data.js"></script>
+
+</head>
+<body>
+<div class="container">
+
+
+	<div class="row">
+		<div id="header" class="col-lg-12" >
+			<h1>ひな形と行列データからコード群を生成</h1>
+			<p></p>
+		</div>
+	</div>
+
+	<div class="sec3">
+		<textarea id="pasting_csv" class="form-control" rows="6" placeholder="CSVを貼り付けてください" title="CSVを貼り付けてください。Excelからそのまま貼り付け可能。タブ区切りのデータ。">1&#x0009;neko&#x0009;猫&#13;2&#x0009;yagi&#x0009;山羊&#13;3&#x0009;same&#x0009;鮫&#13;4&#x0009;wasi&#x0009;鷲&#13;5&#x0009;goki&#x0009;御器</textarea>
+		<textarea id="hina" class="form-control" rows="6" placeholder="ひな形を入力してください" title="ひな形を入力してください。変値は「%+列番」">&lt;div id="animal%0"&gt;&#13;&#x0009;&lt;span&gt;%1&lt;/span&gt;&#13;&#x0009;&lt;span&gt;%2&lt;/span&gt;&#13;&lt;/div&gt;</textarea>
+
+		<br>
+		<input type="button" value="コード作成" onclick="execution1()" class="btn btn-primary" />
+		<pre id="res" style="margin:20px;"></pre>
+		
+		
+
+	</div>
+
+
+	<div class="row">
+		<div id="footer" class="col-md-12"  >
+			<p>(c)wacgance 2015-11-24</p>
+		</div>
+	</div>
+
+</div><!-- container  -->
+</body>
+</html>
