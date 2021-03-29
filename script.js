@@ -98,6 +98,8 @@ function convFormatWithMillisecond(u){
 	 */
 	function DateFormat(date, format){
 
+		if (format==null) format ='yyyy-mm-dd hh:ii:ss';
+		
 		var result = format;
 
 		var f;
@@ -168,7 +170,9 @@ function convFormatWithMillisecond(u){
 	 * @date 2012/06/10 新規作成
 	 */
 	function DateParse(date, format){
-
+		
+		if (format==null) format ='yyyy-mm-dd hh:ii:ss';
+		
 		var year = '1990';
 		var month = '01';
 		var day = '01';
@@ -186,7 +190,7 @@ function convFormatWithMillisecond(u){
 			year = date.substr(idx, f.length);
 		}
 
-		f = 'MM';
+		f = 'mm';
 		idx = format.indexOf(f);
 		if ( idx > -1 ) {
 			month = parseInt(date.substr(idx, f.length), 10) - 1;
@@ -198,13 +202,13 @@ function convFormatWithMillisecond(u){
 			day = date.substr(idx, f.length);
 		}
 
-		f = 'HH';
+		f = 'hh';
 		idx = format.indexOf(f);
 		if ( idx > -1 ) {
 			hour = date.substr(idx, f.length);
 		}
 
-		f = 'mm';
+		f = 'ii';
 		idx = format.indexOf(f);
 		if ( idx > -1 ) {
 			minute = date.substr(idx, f.length);
