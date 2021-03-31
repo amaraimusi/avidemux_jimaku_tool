@@ -89,7 +89,7 @@ function convFormatWithMillisecond(u){
 }
 
 	/**
-	 * 日付オブジェクトから文字列に変換します
+	 * 日時オブジェクトから指定フォーマットの文字列に変換します
 	 * 
 	 * @param date 対象の日付オブジェクト
 	 * @param format フォーマット
@@ -161,7 +161,7 @@ function convFormatWithMillisecond(u){
 
 
 	/**
-	 * 文字列から日付オブジェクトに変換します
+	 * 日時文字列から日付オブジェクトに変換します
 	 * 
 	 * @param date 対象の日付オブジェクト
 	 * @param format フォーマット
