@@ -10,12 +10,14 @@ $(()=>{
 	vueApp = new Vue({
 		el: '#vue_app',
 		data: {
-			start_datetime: '00:00:10', // 字幕開始時間
-			display_time: 4.5, // 表示時間（秒）
+			start_datetime: '00:00:00', // 字幕開始時間
+			display_time: 5, // 表示時間（秒）
 			interval: 0.2, // 時間間隔(秒）
-			row_count: 2, // 字幕行数
+			row_count: 1, // 字幕行数
+			limit_text_count: 20, // 1行文字数制限
 			data_text: '水槽を畑に植えている。\nI Planting fish tank.\nこれらの水槽は私の家族から追い出された。\nMy family said "Throw away the aquarium! "\n難民水槽である。\nWhat did my aquarium do! ..so put to the field.', // データテキスト
 			res:'',
+			err_msg:'',
 		}
 	})
 });
@@ -28,6 +30,7 @@ function execution1(){
 	let interval = vueApp.interval; // 時間間隔(秒）
 	let row_count = vueApp.row_count; // 字幕行数
 	let data_text = vueApp.data_text; // データテキスト
+	let limit_text_count = vueApp.limit_text_count; // １行の制限文字数
 	
 	display_time = display_time * 1;
 	display_time = display_time.toFixed(3); // 小数点以下3桁まで
@@ -42,6 +45,7 @@ function execution1(){
 	let output = '';
 	let i2 = 0;
 	let index = 0;
+	let err_msg = '';
 	
 	for(let i in ary){
 		let line = ary[i];
@@ -61,6 +65,14 @@ function execution1(){
 			
 			u += (display_time * 1000);
 		}
+		console.log(line);//■■■□□□■■■□□□
+		let text_count = countTextLength(line) / 2;
+		let over_count = text_count - limit_text_count;
+		if(over_count > 0){
+			let err = `${line}→${over_count}文字オーバー\n`;
+			err_msg += err;
+		}
+		
 		output += '\n' + line;
 		
 		i2++;
@@ -71,8 +83,22 @@ function execution1(){
 		
 	}
 	
+	vueApp.err_msg = err_msg;
 	vueApp.res = output;
 
+}
+
+function countTextLength(str) {
+    let length = 0;
+    for (const char of str) {
+        // 半角かどうかを判定（ASCII範囲: 0x00～0xFF）
+        if (char.charCodeAt(0) <= 0xFF) {
+            length += 1; // 半角は1加算
+        } else {
+            length += 2; // 半角以外は2加算
+        }
+    }
+    return length;
 }
 
 	

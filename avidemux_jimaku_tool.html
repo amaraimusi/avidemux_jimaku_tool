@@ -37,16 +37,19 @@ Avidemuxの字幕用ファイル（srtファイル）に入力するテキスト
 <div id="vue_app">
 
 	<label for="">
-		字幕開始時間:<input type="text" v-model='start_datetime' />
+		字幕開始時間:<input type="time" step="1" v-model='start_datetime' />
 	</label>
 	<label for="">
-		表示時間（秒）:<input type="text" v-model='display_time' />
+		表示時間（秒）:<input type="text" v-model='display_time' style="width:40px" />
 	</label>
 	<label for="">
-		時間間隔(秒）:<input type="text" v-model='interval' />
+		時間間隔(秒）:<input type="text" v-model='interval'  style="width:60px"/>
 	</label>
 	<label for="">
-		字幕行数:<input type="text" v-model='row_count' />
+		字幕行数:<input type="text" v-model='row_count'  style="width:40px"/>
+	</label>
+	<label for="">
+		1行文字数制限:<input type="text" v-model='limit_text_count'  style="width:40px" />
 	</label>
 	<br>
 	
@@ -56,6 +59,7 @@ Avidemuxの字幕用ファイル（srtファイル）に入力するテキスト
 	
 	<br>
 	<input type="button" value="srtファイル用のテキストデータ生成" onclick="execution1()" class="btn btn-primary btn-sm" />
+	<pre id="err_msg" style="color:red;margin:20px;">{{err_msg}}</pre>
 	<pre id="res" style="margin:20px;">{{res}}</pre>
 </div>
 
